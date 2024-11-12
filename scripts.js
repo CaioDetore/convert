@@ -40,6 +40,17 @@ function convertCurrency(amount, price, symbol) {
     // Exibindo a cotação da moeda selecionada
     description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`
     
+    let total = amount * price
+
+    if (isNaN(total)) {
+      return alert("Por favor, digite o valor corretamente para converter.")
+    }
+
+    total = formatCurrencyBRL(total).replace("R$", "")
+    
+    // Exibe o resultado total
+    result.textContent = `${total} Reais`
+
     // Adiciona a classe que exibe o footer
     footer.classList.add("show-result")
   } catch (error) {
